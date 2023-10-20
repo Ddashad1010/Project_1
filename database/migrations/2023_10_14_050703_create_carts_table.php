@@ -14,13 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->increaments('id');
+            $table->increments('id');
             $table->unsignedInteger('product_id');
             $table->unsignedBigInteger('user_id');
             $table->text('description')->nullable();
             $table->string('amount');
             $table->string('total');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
