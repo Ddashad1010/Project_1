@@ -16,8 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $items = Products::all();
-        dd($items);
-        return view('product.index', compact('items'));
+        return view('shop.products.index', compact('items'));
     }
 
     /**
@@ -50,6 +49,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $item = Products::findOrFail($id);
+        return view('shop.products.show', compact('item'));
     }
 
     /**
